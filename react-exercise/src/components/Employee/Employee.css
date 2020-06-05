@@ -1,0 +1,26 @@
+.Employee__info {
+    display: flex;
+    margin-top: 10px;
+    border: 2px solid #434343;
+    width: 200px;
+    padding: 5px;
+    background-color: #ee682a;
+}
+
+.Employee__img {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #434343;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.Employee__name {
+    display: inline-block;
+    margin: 0;
+    padding-top: 15px;
+    padding-left: 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+    color: #060809;
+}

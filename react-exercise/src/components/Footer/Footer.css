@@ -1,0 +1,12 @@
+.Footer__wrapper {
+    height: 50px;
+    background-color: #434343;
+    text-align: center;
+}
+
+.Footer__copyrights {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+    color: #fff;
+    padding-top: 15px;
+}
