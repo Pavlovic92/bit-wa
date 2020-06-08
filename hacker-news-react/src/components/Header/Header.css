@@ -1,0 +1,12 @@
+.Header__wrapper {
+    background-color: rgb(238, 112, 39);
+    height: 40px;
+}
+
+.Header__title {
+    font-family: monospace;
+    margin: 0px;
+    padding-top: 5px;
+    padding-left: 10px;
+    color: white;
+}

@@ -1,0 +1,13 @@
+.MovieCard__wrapper {
+    margin-bottom: 50px;
+}
+
+#MovieCard__image {
+    width: 100%;
+    height: 600px;
+}
+
+.MovieCard__title {
+    margin-top: 20px;
+    text-align: center;
+}
