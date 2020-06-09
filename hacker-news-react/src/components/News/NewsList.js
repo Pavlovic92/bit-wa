@@ -14,7 +14,7 @@ class NewsList extends React.Component {
     render() {
         return (
             <div className="NewsList__list">
-                {this.state.storyIds.map(storyId => <Post key={storyId} id={storyId}  />)}
+                {this.state.storyIds.map(storyId => <li><Post key={storyId} id={storyId}/></li>)}
             </div>
         )
     }
@@ -22,7 +22,7 @@ class NewsList extends React.Component {
         fetch('https://hacker-news.firebaseio.com/v0/topstories.json')
             .then(res => res.json())
             .then(ids => {
-                this.setState({ storyIds: ids.slice(0, 10) });
+                this.setState({ storyIds: ids.slice(0, 9) });
             });
     }
 

@@ -1,10 +1,10 @@
-.Header__wrapper {
+.Footer__wrapper {
     background-color: #EA5421;
     height: 30px;
-    padding: 10px;
+    padding: 15px 0px 0px 10px;
 }
 
-.Header__wrapper > h1 {
+.Footer__wrapper > p {
     margin: 0;
     color: #fff;
     font-family: monospace;

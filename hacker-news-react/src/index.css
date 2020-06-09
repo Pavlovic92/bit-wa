@@ -1,4 +1,8 @@
 body {
-    background-color: #d3d3d366;
-    margin: 0px;
+    margin: 0;
+    background-color: #F6F6EE;
+}
+
+p {
+    margin: 0px 25px;
 }
