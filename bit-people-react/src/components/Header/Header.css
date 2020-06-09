@@ -1,0 +1,11 @@
+.Header__wrapper {
+    background-color: #ee6e73;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    box-shadow: 1px 1px 3px #0000007a;
+}
+
+.Header__wrapper>h4 {
+    font-size: 18px;
+}
