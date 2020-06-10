@@ -1,36 +1,78 @@
 import React from 'react';
 import { Header } from './components/Header/Header';
+import { SearchBar } from './components/SearchBar/SearchBar';
 import { Footer } from './components/Footer/Footer';
-import { ListView } from './components/ListView/ListView';
-import { GridView } from './components/GridView/GridView';
+import { Users } from './components/Users/Users'
+
 
 class App extends React.Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      users: []
+      users: [],
+      isListView: true,
+      value: ''
     }
+    this.gridListSwitch = this.gridListSwitch.bind(this)
   };
 
   componentDidMount() {
+    this.getData();
+  }
+  //// Functions ////
+
+  gridListSwitch = () => {
+    this.setState({
+      isListView: !this.state.isListView
+    })
+  }
+
+  getData = () => {
+    if (localStorage.getItem('userKey') === '') {
+      fetch('https://randomuser.me/api/?results=15')
+        .then(res => res.json())
+        .then(data => {
+          this.setState({ users: data.results })
+          localStorage.setItem('userKey', JSON.stringify(data.results))
+        });
+    } else {
+      this.setState({ users: JSON.parse(localStorage.getItem('userKey')) })
+    }
+  }
+
+  onReload = () => {
     fetch('https://randomuser.me/api/?results=15')
       .then(res => res.json())
       .then(data => {
         this.setState({ users: data.results })
+        localStorage.setItem('userKey', JSON.stringify(data.results))
       });
   }
 
+  onSearch = (newValue) => {
+
+    this.setState({ value: newValue });
+  }
+
+  //////////////////
+
   render() {
+
+    const searchResult = this.state.users.filter(user => user.name.first.toLowerCase().includes(this.state.value.toLowerCase()) ||
+      user.name.last.toLowerCase().includes(this.state.value.toLowerCase()))
+
+
     return (
       <div className="App">
-        <Header />
-        <ListView users={this.state.users} />
-        <GridView users={this.state.users} />
+        <Header reload={this.onReload} switchFunc={this.gridListSwitch} switcher={this.state.isListView} />
+        <SearchBar onChange={this.onSearch} />
+        <Users users={searchResult} isListView={this.state.isListView} />
         <Footer />
       </div>
     );
   }
+
 }
 
 export default App;
