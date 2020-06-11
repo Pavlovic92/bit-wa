@@ -2,7 +2,9 @@ import React from 'react';
 import { Header } from './components/Header/Header';
 import { SearchBar } from './components/SearchBar/SearchBar';
 import { Footer } from './components/Footer/Footer';
-import { Users } from './components/Users/Users'
+import { Users } from './components/Users/Users';
+import { Loader } from './components/Loader/Loader';
+// import { Counter } from './components/Users/Counter/Counter';
 
 
 class App extends React.Component {
@@ -29,7 +31,7 @@ class App extends React.Component {
   }
 
   getData = () => {
-    if (localStorage.getItem('userKey') === '') {
+    if (!localStorage.getItem('userKey')) {
       fetch('https://randomuser.me/api/?results=15')
         .then(res => res.json())
         .then(data => {
@@ -55,19 +57,23 @@ class App extends React.Component {
     this.setState({ value: newValue });
   }
 
-  //////////////////
+  renderContent = (searchResult) => {
+    if (this.state.users.length) {
+      return <Users users={searchResult} isListView={this.state.isListView} />
+    }
+    return <Loader />
+  }
 
   render() {
-
     const searchResult = this.state.users.filter(user => user.name.first.toLowerCase().includes(this.state.value.toLowerCase()) ||
-      user.name.last.toLowerCase().includes(this.state.value.toLowerCase()))
-
+      user.name.last.toLowerCase().includes(this.state.value.toLowerCase()));
 
     return (
       <div className="App">
         <Header reload={this.onReload} switchFunc={this.gridListSwitch} switcher={this.state.isListView} />
         <SearchBar onChange={this.onSearch} />
-        <Users users={searchResult} isListView={this.state.isListView} />
+        {/* <Counter gender={this.state.users.gender} /> */}
+        {this.renderContent(searchResult)}
         <Footer />
       </div>
     );
