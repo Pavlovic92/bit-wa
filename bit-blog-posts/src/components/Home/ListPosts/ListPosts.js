@@ -17,6 +17,7 @@ class ListPosts extends React.Component {
         {this.state.posts.map((post) => (
           <SinglePost
             key={post.id}
+            id={post.id}
             title={post.title}
             description={`${post.body.slice(0, 100)}...`}
           />
