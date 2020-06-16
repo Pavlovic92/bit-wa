@@ -8,16 +8,20 @@ const Header = () => {
       <div className=" container">
         <div className="row">
           <h1 className="col-lg-9 col-md-6 col-sm-6 col-12">BIT BLOG</h1>
+
           <Link
             to="/"
-            className="Header__menu col-lg-1 col-md-2 col-sm-2 col-2"
+            className="Header__menu col-lg-1 col-md-2 col-sm-2 col-4"
           >
             Home
           </Link>
-          <Link className=" Header__menu col-lg-1 col-md-2 col-sm-2 col-2">
+          <Link
+            to="/authors/"
+            className=" Header__menu col-lg-1 col-md-2 col-sm-2 col-4"
+          >
             Authors
           </Link>
-          <Link className=" Header__menu col-lg-1 col-md-2 col-sm-2 col-2">
+          <Link className=" Header__menu col-lg-1 col-md-2 col-sm-2 col-4">
             About
           </Link>
         </div>
